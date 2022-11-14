@@ -30,15 +30,15 @@ class RedirectIfAuthenticated
         //     }
         // }
 
-        if(Auth::guard(self::GUARD_USER)->check() && $request->rootIs('user.*')){
+        if(Auth::guard(self::GUARD_USER)->check() && $request->routeIs('user.*')){
             return redirect(RouteServiceProvider::HOME);
         }
 
-        if(Auth::guard(self::GUARD_OWNER)->check() && $request->rootIs('owner.*')){
+        if(Auth::guard(self::GUARD_OWNER)->check() && $request->routeIs('owner.*')){
             return redirect(RouteServiceProvider::OWNER_HOME);
         }
 
-        if(Auth::guard(self::GUARD_ADMIN)->check() && $request->rootIs('admin.*')){
+        if(Auth::guard(self::GUARD_ADMIN)->check() && $request->routeIs('admin.*')){
             return redirect(RouteServiceProvider::ADMIN_HOME);
         }
 
